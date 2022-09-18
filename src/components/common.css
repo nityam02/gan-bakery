@@ -1,0 +1,53 @@
+.hero-container {
+    background:  #fff;
+    box-shadow: 0px 22px 24px 0px rgb(46 51 51 / 5%);
+    padding: 10px 0;
+    text-align: center;
+    width: 275px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid #e50438;
+    position: relative;
+    transition: all .2s ease-in-out;
+  }
+  .hero-container:hover{
+    transform: scale(1.1);
+  }
+  
+  .image-box {
+    width: 260px;
+    height: 260px;
+    border-radius: 16px;
+  }
+  
+  .align-center {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  
+  .product-title{
+    margin-bottom: 4px;
+  }
+
+  .cart-btn{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 48%);
+    border: none;
+    background-color: antiquewhite;
+    font-size: 14px;
+    color: #e50438;
+    cursor: pointer;
+  }
+
+  .delete-btn{
+    border: none;
+    background-color: antiquewhite;
+    font-size: 14px;
+    color: #e50438;
+    cursor: pointer;
+  }

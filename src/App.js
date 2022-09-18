@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import React, { useEffect, useReducer } from "react";
+import { cartReducers } from "./reducers/cartReducers";
+import { API_URL } from "./utlis/constants";
+import Products from "./components/Products";
+import Cart from "./components/Cart";
 
-function App() {
+export default function App() {
+  const [state, dispatch] = useReducer(cartReducers, {
+    products: [],
+    carts: []
+  });
+
+  const fetchProducts = async () => {
+    const data = await fetch(API_URL);
+    const {
+      products
+    } = await data.json();
+
+    dispatch({
+      type: "ADD_PRODUCTS",
+      payload: products
+    });
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Products {...{ state, dispatch }} />
+      <div className="flex flex-col">
+        <div className="heading mt-50">Cart</div>
+      <Cart {...{ state, dispatch }} />
+      </div>
     </div>
   );
 }
-
-export default App;
